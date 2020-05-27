@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutternavigation/DetailNote.dart';
 import 'package:flutternavigation/utils/Notes.dart';
 
 void main() {
@@ -42,8 +43,19 @@ class HomeScreenState extends State<HomeScreen> {
     return ListView.builder(
         itemCount: noteList.length,
         itemBuilder: (context, index) {
-          return ListTile(
-            title: Text(noteList[index].getTitle),
+          return Container(
+            decoration: BoxDecoration(
+              border: Border(
+                bottom: BorderSide(color: Colors.grey, width: 1.0),
+              ),
+            ),
+            child: ListTile(
+              title: Text(noteList[index].getTitle),
+              onTap: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => DetailNote()));
+              },
+            ),
           );
         });
   }
